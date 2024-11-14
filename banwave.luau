@@ -32,7 +32,7 @@ repeat
          pcall(function()table.insert(urs,`roblox.com/users/{tostring(u.user.userId)}`)end)
       end
       c=data.nextPageCursor
-      print(`⏳On group cursor: {c}`)
+      print(`⏳Group cursor: {c}`)
    end)
    if not su then warn(`❌Failed adding users onto list: {er}`) end
 until not c
