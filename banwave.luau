@@ -1,4 +1,4 @@
---// Config (Script was made fast so it is mid😔🙏)
+--// Config
 local id = 34982427 --// Target GroupId
 local banreason = [[Ran a Remote Code Execution Exploit Script. This is not a false ban. 
 To appeal join the Community Server and message adudu21
@@ -14,10 +14,8 @@ local s = os.clock()--// Debug time
 local c = "" --// HTTP Cursor
 --// Fetch group members
 local function getusers(tarurl)--// Target URL
-   local ur=url
+   local s,r,t,ur=nil,nil,5,url
    if tarurl and tarurl~="" then ur=`{url}&cursor={tarurl}`end
-   --// Error handler
-   local s,r,t=nil,nil,5
    repeat
       s,r=pcall(function()return hs:GetAsync(ur,true)end)
       if not s then
@@ -28,13 +26,15 @@ local function getusers(tarurl)--// Target URL
 --// Fetch group members
 print("⏳Fetching group members...")
 repeat
-   pcall(function()
+   su,er=pcall(function()
       local data = getusers(c)
       for _, u in ipairs(data.data) do
          pcall(function()table.insert(urs,`roblox.com/users/{tostring(u.user.userId)}`)end)
       end
       c=data.nextPageCursor
+      print(`⏳On group cursor: {c}`)
    end)
+   if not su then warn(`❌Failed adding users onto list: {er}`) end
 until not c
 --// adudu21's Ban-Wave Developer-Console Script
 print("⏳Preparing ban-wave...")
