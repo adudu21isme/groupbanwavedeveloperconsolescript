@@ -25,14 +25,14 @@ repeat
    su,er=pcall(function()
       local data = getusers(c)
       for _, u in ipairs(data.data) do
-         pcall(function()table.insert(urs,{tostring(u.user.userId)})end)
+         pcall(function()table.insert(urs,tostring(u.user.userId))end)
       end
       c=data.nextPageCursor
       print(`⏳Group cursor: {c}`)
    end)
    if not su then warn(`❌Failed adding users onto list: {er}`) end
 until not c
---// adudu21's Ban-Wave Developer-Console Script
+--// adudu21's Unban-Wave Developer-Console Script
 print("⏳Preparing unban-wave...")
 --// Vars
 local list = table.concat(urs,",")--// Example:1,2,3
@@ -51,7 +51,7 @@ for n=1,tuids,50 do
    local s,r,t = nil,nil,3
    repeat
       s,r = pcall(function()
-         return plrs:BanAsync({UserIds=batch,ApplyToUniverse=true})  
+         return plrs:UnbanAsync({UserIds=batch,ApplyToUniverse=true})  
       end)
       if not s then
          if string.find(r,"NOT_FOUND") then --// Avoid errors from terminated users
@@ -61,8 +61,8 @@ for n=1,tuids,50 do
       end
    until s or t==0
    if s then
-      if s=="t" then print(`🟢⚠️User is terminated. Unbanned: {table.concat(batch, ", ")}`) else print(`🟢Unbanned: {table.concat(batch, ", ")}`) end
+      if s=="t" then print(`🔨⚠️User is terminated. Unbanned: {table.concat(batch, ", ")}`) else print(`🔨Unbanned: {table.concat(batch, ", ")}`) end
    else warn(`❌Failure: {r}`)
    end
 end
-print(`✅Finished! Took {os.clock()-s} seconds!`)
+print(`✅Finished unbanning! Took {os.clock()-s} seconds!`)
