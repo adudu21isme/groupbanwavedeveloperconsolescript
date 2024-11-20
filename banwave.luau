@@ -39,7 +39,7 @@ until not c
 --// adudu21's Ban-Wave Developer-Console Script
 print("⏳Preparing ban-wave...")
 --// Vars
-local list = table.concat(urs,",")--// Example:roblox.com/users/1,roblox.com/users/12,roblox.com/users/123
+local list = table.concat(urs,",")--// Example:1,2,3
 local uids = {}--// Banlist (data extracted from list)
 --// Convert list into userids
 for u in string.gmatch(list,"(%d+)") do table.insert(uids,tonumber(u))end
