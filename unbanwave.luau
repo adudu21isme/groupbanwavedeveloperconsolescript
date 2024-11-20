@@ -61,7 +61,7 @@ for n=1,tuids,50 do
       end
    until s or t==0
    if s then
-      if s=="t" then print(`🔨⚠️User is terminated. Unbanned: {table.concat(batch, ", ")}`) else print(`🔨Unbanned: {table.concat(batch, ", ")}`) end
+      if s=="t" then print(`🟢⚠️User is terminated. Unbanned: {table.concat(batch, ", ")}`) else print(`🟢Unbanned: {table.concat(batch, ", ")}`) end
    else warn(`❌Failure: {r}`)
    end
 end
