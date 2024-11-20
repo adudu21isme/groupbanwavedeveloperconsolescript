@@ -29,7 +29,7 @@ repeat
    su,er=pcall(function()
       local data = getusers(c)
       for _, u in ipairs(data.data) do
-         pcall(function()table.insert(urs,`{tostring(u.user.userId)}`)end)
+         pcall(function()table.insert(urs,{tostring(u.user.userId)})end)
       end
       c=data.nextPageCursor
       print(`⏳Group cursor: {c}`)
