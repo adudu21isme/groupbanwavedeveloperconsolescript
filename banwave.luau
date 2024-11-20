@@ -42,7 +42,7 @@ print("⏳Preparing ban-wave...")
 local list = table.concat(urs,",")--// Example:roblox.com/users/1,roblox.com/users/12,roblox.com/users/123
 local uids = {}--// Banlist (data extracted from list)
 --// Convert list into userids
-for u in string.gmatch(list,"roblox.com/users/(%d+)") do table.insert(uids,tonumber(u))end
+for u in string.gmatch(list,"(%d+)") do table.insert(uids,tonumber(u))end
 --// Total userids
 local tuids = #uids
 --// Roblox's BanAsync limit is 50
